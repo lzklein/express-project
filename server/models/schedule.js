@@ -1,13 +1,13 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../models');
 
-const EmployeeSchedule = sequelize.define('EmployeeSchedule', {
+// join table employees to shifts
+const Schedule = sequelize.define('schedule', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    },
-
+    }
 });
 
-module.exports = EmployeeSchedule;
+module.exports = Schedule;

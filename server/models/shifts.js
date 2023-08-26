@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../models');
 
-const Shift = sequelize.define('Shift', {
+const Shift = sequelize.define('shifts', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

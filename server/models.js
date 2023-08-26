@@ -9,14 +9,17 @@ const sequelize = new Sequelize('mydatabase', {
 // imports
 const Shift = require('./models/shifts');
 const Employee = require('./models/employees');
-const EmployeeSchedule = require('./models/employeeschedule');
+const Schedule = require('./models/schedule');
 const TimeOffRequest = require('./models/timeoffrequests');
 
 // relationships
-Employee.belongsToMany(Shift, { through: EmployeeSchedule });
-Shift.belongsToMany(Employee, { through: EmployeeSchedule });
+Employee.belongsToMany(Shift, { through: Schedule });
+Shift.belongsToMany(Employee, { through: Schedule });
+
+Schedule.belongsTo(Employee, { foreignKey: 'employee_id' });
+Schedule.belongsTo(Shift, { foreignKey: 'shift_id' });
 
 Employee.hasMany(TimeOffRequest);
-TimeOffRequest.belongsTo(Employee);
+TimeOffRequest.belongsTo(Employee, { foreignKey: 'employee_id'});
 
-module.exports = { sequelize, Shift, Employee, EmployeeSchedule, TimeOffRequest };
+module.exports = { sequelize, Shift, Employee, Schedule, TimeOffRequest };
