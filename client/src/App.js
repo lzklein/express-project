@@ -6,6 +6,7 @@ import Home from './components/home';
 
 export const AuthContext = createContext();
 
+// todo STRETCH IDEAS: add to calendar button?
 function App() {
 
 
