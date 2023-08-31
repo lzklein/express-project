@@ -1,10 +1,5 @@
 const { Sequelize } = require('sequelize');
-
-const sequelize = new Sequelize('mydatabase', {
-  host: 'localhost',
-  dialect: 'sqlite',
-  storage: './mydatabase.db'
-});
+const sequelize = require('./config');
 
 // imports
 const Shift = require('./models/shifts');

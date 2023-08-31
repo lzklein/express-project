@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../models');
+const sequelize = require('../config');
 
 // join table employees to shifts
 const Schedule = sequelize.define('schedule', {

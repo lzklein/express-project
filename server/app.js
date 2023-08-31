@@ -1,5 +1,6 @@
 const express = require('express');
-const { sequelize } = require('./models'); // Import your Sequelize instance
+const sequelize = require('./config'); // Import your Sequelize instance
+// const { Shift, Employee, Schedule, TimeOffRequest } = require('./models'); //! for defining here, probably not needed
 const routes = require('./routes'); // Import your routes
 const cors = require('cors');
 

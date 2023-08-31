@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../models');
+const sequelize = require('../config');
 
 const TimeOffRequest = sequelize.define('timeoff', {
     id: {
