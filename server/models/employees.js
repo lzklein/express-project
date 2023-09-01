@@ -16,7 +16,7 @@ const Employee = sequelize.define('employees', {
         allowNull: false
     },
     salary: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     hire_date: {

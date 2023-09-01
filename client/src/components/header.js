@@ -7,13 +7,14 @@ import Navbar from './navbar'
 const seedEmployer = async () => {
   try {
     const newEmployee = {
-      name: 'John Doe',
-      position: 'Manager',
-      salary: '60000',
+      name: 'Dev',
+      position: 'Dev',
+      salary: 10,
+      admin: 1,
       // Other employee properties...
     };
 
-    const response = await fetch('/api/employees', {
+    const response = await fetch('http://localhost:5555/employees', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ const seedEmployer = async () => {
 
 const resetData = async () => {
   try {
-    const response = await fetch('/reset', {
+    const response = await fetch('http://localhost:5555/reset', {
       method: 'DELETE', // Adjust the method based on your server's implementation
     });
 
@@ -50,9 +51,9 @@ const resetData = async () => {
 const header = () => {
   return (
     <div>
+      <Navbar />
       <button onClick={seedEmployer}>Boop</button>
       <button onClick={resetData}>RESET</button>
-      <Navbar />
     </div>
   )
 }

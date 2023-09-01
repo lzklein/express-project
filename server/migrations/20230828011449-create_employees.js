@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false
       },
       salary: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       hire_date: {
