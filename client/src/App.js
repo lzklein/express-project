@@ -11,6 +11,7 @@ import Shifts from './components/shifts';
 import Employees from './components/employees';
 import Login from './components/login';
 import Profile from './components/profile';
+import Timeoffinbox from './components/timeoffinbox';
 
 export const AuthContext = createContext();
 
@@ -22,6 +23,7 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
+          <Route path='/inbox' element={<Timeoffinbox />}/>
           <Route path='/timeoff' element={<Timeoff />}/>
           <Route path='/schedule' element={<Schedule />}/>
           <Route path='/shifts' element={<Shifts />}/>

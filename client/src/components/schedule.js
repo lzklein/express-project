@@ -1,10 +1,10 @@
 import React from 'react'
 
 // weekly shift schedule
-const schedule = () => {
+const Schedule = () => {
   return (
     <div>schedule</div>
   )
 }
 
-export default schedule
+export default Schedule

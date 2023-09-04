@@ -1,10 +1,10 @@
 import React from 'react'
 
 // single employee's info
-const employeeinfo = () => {
+const Employeeinfo = () => {
   return (
     <div>employeeinfo</div>
   )
 }
 
-export default employeeinfo
+export default Employeeinfo

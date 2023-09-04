@@ -1,5 +1,6 @@
 import React from 'react'
 
+// ! ADMIN ONLY
 // make edit delete shifts
 const shifts = () => {
   return (

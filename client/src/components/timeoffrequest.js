@@ -1,10 +1,10 @@
 import React from 'react'
 
 // employee time off request form
-const timeoffrequest = () => {
+const Timeoffrequest = () => {
   return (
     <div>timeoffrequest</div>
   )
 }
 
-export default timeoffrequest
+export default Timeoffrequest

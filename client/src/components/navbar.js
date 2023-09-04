@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 // login/logout button, schedule, timeoff navs
 // profile/employee info
 // extra buttons for admin
-const navbar = () => {
+const Navbar = () => {
   return (
     <nav>
       <ul className="nav-list">
@@ -24,6 +24,10 @@ const navbar = () => {
           <NavLink to="/schedule">Schedule</NavLink>
         </li>
         <li className="nav-item">
+          //!ADMIN
+          <NavLink to="/inbox">Inbox</NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink to="/timeoff">Time Off Request</NavLink>
         </li>
         <li className="nav-item">
@@ -34,4 +38,4 @@ const navbar = () => {
   )
 }
 
-export default navbar
+export default Navbar

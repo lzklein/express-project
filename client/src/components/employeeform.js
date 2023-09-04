@@ -2,10 +2,10 @@ import React from 'react'
 
 // ! ADMIN ONLY
 // new employee form
-const employeeform = () => {
+const Employeeform = () => {
   return (
     <div>employeeform</div>
   )
 }
 
-export default employeeform
+export default Employeeform

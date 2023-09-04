@@ -7,7 +7,7 @@ const router = express.Router();
 const Employee = require('../models/employees'); // Import your Employee model
 
 // GET employee by ID
-router.get('/:id', async (req, res) => {
+router.get('/employees/:id', async (req, res) => {
   const id = req.params.id;
   
   try {

@@ -1,10 +1,10 @@
 import React from 'react'
 
 // full list of all employees
-const employees = () => {
+const Employees = () => {
   return (
     <div>employees</div>
   )
 }
 
-export default employees
+export default Employees

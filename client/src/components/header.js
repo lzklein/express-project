@@ -48,7 +48,7 @@ const resetData = async () => {
   }
 }
 
-const header = () => {
+const Header = () => {
   return (
     <div>
       <Navbar />
@@ -58,4 +58,4 @@ const header = () => {
   )
 }
 
-export default header
+export default Header

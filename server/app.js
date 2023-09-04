@@ -1,16 +1,26 @@
-const express = require('express');
-const sequelize = require('./config'); // Import your Sequelize instance
-// const { Shift, Employee, Schedule, TimeOffRequest } = require('./models'); //! for defining here, probably not needed
-const routes = require('./routes'); // Import your routes
-const cors = require('cors');
+require('dotenv').config();
 
+const express = require('express');
+const sequelize = require('./config'); 
+// const { Shift, Employee, Schedule, TimeOffRequest } = require('./models'); //! for defining here, probably not needed
+const routes = require('./routes');
+const cors = require('cors');
+const session = require('express-session');
+
+// define app
 const app = express();
 
+const secretKey = process.env.SECRET_KEY;
+
+// middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-// Add any other middleware you need, e.g., CORS handling
-
+app.use(session({
+  secret: secretKey, 
+  resave: false, // prevent unnecessary server updates, won't save if no changes
+  saveUninitialized: false, // don't save uninitialized sessions (new user that hasn't logged in or done anything yet)
+}));
 app.use(routes);
 
 sequelize
