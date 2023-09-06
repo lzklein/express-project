@@ -35,7 +35,7 @@ const seedEmployer = async () => {
 const resetData = async () => {
   try {
     const response = await fetch('http://localhost:5555/reset', {
-      method: 'DELETE', // Adjust the method based on your server's implementation
+      method: 'DELETE', 
     });
 
     if (response.ok) {
@@ -48,12 +48,36 @@ const resetData = async () => {
   }
 }
 
+const checkSession = () => {
+  console.log('sessionUser', localStorage.getItem('sessionUser'))
+}
+
+const handleLogout = async() => {
+  try {
+    const response = await fetch('http://localhost:5555/logout', {
+      method: 'POST',
+    });
+
+    if (response.ok) {
+      // Clear the session token from localStorage
+      localStorage.removeItem('sessionUser');
+      console.log('Logout successful');
+    } else {
+      console.error('Error logging out');
+    }
+  } catch (error) {
+    console.error('Error logging out:', error);
+  }
+}
+
 const Header = () => {
   return (
     <div>
       <Navbar />
       <button onClick={seedEmployer}>Boop</button>
       <button onClick={resetData}>RESET</button>
+      <button onClick={checkSession}>SESSION</button>
+      <button onClick={handleLogout}>logout</button>
     </div>
   )
 }

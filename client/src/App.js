@@ -16,8 +16,59 @@ import Timeoffinbox from './components/timeoffinbox';
 export const AuthContext = createContext();
 
 function App() {
+  useEffect(()=>{
+    checkSession()
+  },[])
 
+  const [login, setLogin] = useState(false)
+  const checkSession = () => {
+    fetch('http://localhost:5555/checkuser',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        sessionUser: localStorage.getItem('sessionUser'),
+      })
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((checkData) => {
+        if (checkData.sessionUser) {
+          console.log('User is logged in:', checkData.sessionUser);
+          setLogin(true)
+        } else {
+          console.log('User is not logged in.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error checking session:', error);
+      });
+  }
 
+  const logout = async() => {
+    try {
+      const response = await fetch('http://localhost:5555/logout', {
+        method: 'POST',
+      });
+  
+      if (response.ok) {
+        // Clear the session token from localStorage
+        localStorage.removeItem('userName');
+        setLogin(false)
+        console.log('Logout successful');
+      } else {
+        console.error('Error logging out');
+      }
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  }
+  
   return (
     // <AuthContext.Provider value={{ token, setToken, logout , setUserData, userData, guilds, setGuilds, sessionData, setSessionData}}>
       <div className="App">

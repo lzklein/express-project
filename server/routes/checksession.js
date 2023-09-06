@@ -1,8 +1,13 @@
-app.get('/user', (req, res) => {
-    if (req.session.user) {
-      res.json(req.session.user); // if session exists, return user info
+const express = require('express');
+const router = express.Router();
+
+router.post('/checkuser', (req, res) => {
+  const sessionUser = req.body.sessionUser;
+    if (!!sessionUser) {
+      req.session.user =  sessionUser 
+      res.json({sessionUser: req.session.user}); // if session exists, return user info
     } else {
-      res.status(401).send('Not logged in');
-    }
+      res.json({ message: 'Not logged in' }); }
   });
   
+module.exports = router;

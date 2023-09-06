@@ -14,8 +14,8 @@ const checkSessionRoute = require('./routes/checksession');
 router.use(employeesRoute);
 router.use(employeesByIdRoute);
 router.delete('/reset', resetController.resetData);
-router.use('/login', loginRoute);
-router.use('/logout', logoutRoute);
-router.use('/checksession', checkSessionRoute);
+router.use(loginRoute);
+router.use(logoutRoute);
+router.use(checkSessionRoute);
 
 module.exports = router;
