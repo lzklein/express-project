@@ -5,7 +5,7 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 // Components
 import Home from './components/home';
 import Header from './components/header';
-import Timeoff from './components/timeoff';
+import TimeoffRequest from './components/timeoffrequest';
 import Schedule from './components/schedule';
 import Shifts from './components/shifts';
 import Employees from './components/employees';
@@ -79,7 +79,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/inbox' element={<Timeoffinbox />}/>
-          <Route path='/timeoff' element={<Timeoff />}/>
+          <Route path='/timeoff' element={<TimeoffRequest />}/>
           <Route path='/schedule' element={<Schedule />}/>
           <Route path='/shifts' element={<Shifts />}/>
           <Route path='/employees' element={<Employees />}/>
