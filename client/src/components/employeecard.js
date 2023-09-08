@@ -1,16 +1,13 @@
-import React, {useContext} from 'react'
-import { AuthContext } from '../App';
+import React from 'react'
 
-// employee profile, see shifts in list, total salary, etc
-const Profile = () => {
-  const { employee} = useContext(AuthContext);
-
+const EmployeeCard = ({employee}) => {
   return (
     <div className="employee-card">
         <p>{employee.name}, {employee.position} | Hired {employee.hire_date} </p>
         <p>Salary: {employee.salary}, Total hours: {employee.hours}, Total pay: {employee.hours * employee.salary}</p>
+        <button>Terminate</button>
     </div>
   )
 }
 
-export default Profile
+export default EmployeeCard

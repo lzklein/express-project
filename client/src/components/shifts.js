@@ -1,11 +1,12 @@
 import React from 'react'
+import { AuthContext } from '../App';
 
 // ! ADMIN ONLY
 // make edit delete shifts
-const shifts = () => {
+const Shifts = () => {
   return (
-    <div>shifts</div>
+    <div>Shifts</div>
   )
 }
 
-export default shifts
+export default Shifts

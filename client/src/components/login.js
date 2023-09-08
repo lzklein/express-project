@@ -11,13 +11,12 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleCheck=()=> {
+  const handleShowPassword=()=> {
     setShow(!show)
   }
   const handleRemember = () => {
     setRemember(!remember)
   }
-
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -50,7 +49,6 @@ const Login = () => {
     }
   };
   
-
   return (
     <div>
       <form onSubmit={handleLogin}>
@@ -58,7 +56,7 @@ const Login = () => {
         <input type={show? "text": "password"} onChange = {(e)=>{setPassword(e.target.value)}} placeholder='password'></input>
         <button type='submit'>Login</button>
       </form>
-      <input type='checkbox' onChange={handleCheck}></input> Show password
+      <input type='checkbox' onChange={handleShowPassword}></input> Show password
       <input type='checkbox' onChange={handleRemember}></input> Remember me
     </div>
   )
