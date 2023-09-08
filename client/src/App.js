@@ -22,6 +22,7 @@ function App() {
 
   const navigate = useNavigate()
   const [loggedIn, setLoggedIn] = useState(false)
+  const [employee, setEmployee] = useState(null)
   const checkSession = () => {
     fetch('http://localhost:5555/checkuser',{
       method: 'POST',
@@ -41,6 +42,7 @@ function App() {
       .then((checkData) => {
         if (checkData.sessionUser) {
           console.log('User is logged in:', checkData.sessionUser);
+          setEmployee(JSON.parse(localStorage.getItem("sessionUser")))
           setLoggedIn(true)
         } else {
           console.log('User is not logged in.');
@@ -60,6 +62,7 @@ function App() {
       if (response.ok) {
         localStorage.removeItem('sessionUser');
         setLoggedIn(false)
+        setEmployee(null)
         console.log('Logout successful');
         navigate('/');
       } else {
@@ -71,7 +74,7 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={{loggedIn, setLoggedIn, logout}}>
+    <AuthContext.Provider value={{loggedIn, setLoggedIn, logout, employee, setEmployee}}>
       <div className="App">
         <Header />
         <Routes>

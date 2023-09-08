@@ -7,8 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 // profile/employee info
 // extra buttons for admin
 const Navbar = () => {
-  const { loggedIn, logout } = useContext(AuthContext);
-  const employee = JSON.parse(localStorage.getItem("sessionUser"))
+  const { loggedIn, logout, employee} = useContext(AuthContext);
 
   return (
     <nav>
@@ -16,7 +15,7 @@ const Navbar = () => {
         <li className="nav-item">
           <NavLink to="/">Home</NavLink>
         </li>
-        { employee?.admin ?
+        { employee?.admin && loggedIn ?
          <>
         <li className="nav-item">
           <NavLink to="/employees">All Employees</NavLink>
@@ -29,14 +28,14 @@ const Navbar = () => {
         </li>
         </>
         : null}
+        {loggedIn?
+        <>
         <li className="nav-item">
           <NavLink to="/schedule">Schedule</NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/timeoff">Time Off Request</NavLink>
         </li>
-        {loggedIn?
-        <>
         <li className="nav-item">
         <NavLink to="/profile">{employee.name}</NavLink>
         </li>

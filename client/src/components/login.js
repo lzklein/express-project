@@ -4,7 +4,7 @@ import { AuthContext } from '../App';
 // login for admin only
 // use localstorage remember me feature
 const Login = () => {
-  const { setLoggedIn } = useContext(AuthContext);
+  const { setLoggedIn, setEmployee } = useContext(AuthContext);
 
   const [show, setShow] = useState(false);
   const [remember, setRemember] = useState(false);
@@ -39,6 +39,7 @@ const Login = () => {
         if(remember){
           localStorage.setItem('sessionUser', JSON.stringify(sessionUser));
         }
+        setEmployee(sessionUser)
         setLoggedIn(true);
         console.log('Login successful');
       } else {
