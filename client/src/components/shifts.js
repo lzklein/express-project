@@ -14,7 +14,7 @@ const Shifts = () => {
         <button>Create a new shift</button>
     </div>
   )
-}
+
 }
 
 export default Shifts
