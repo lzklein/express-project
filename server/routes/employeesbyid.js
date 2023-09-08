@@ -4,7 +4,7 @@
 // delete(fire) employee
 const express = require('express');
 const router = express.Router();
-const Employee = require('../models/employees'); // Import your Employee model
+const Employee = require('../models/employees'); 
 
 // GET employee by ID
 router.get('/employees/:id', async (req, res) => {
