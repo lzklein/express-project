@@ -1,6 +1,6 @@
 import './App.css';
 import React, {createContext, useState, useEffect} from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 // Components
 import Home from './components/home';
@@ -20,7 +20,8 @@ function App() {
     checkSession()
   },[])
 
-  const [login, setLogin] = useState(false)
+  const navigate = useNavigate()
+  const [loggedIn, setLoggedIn] = useState(false)
   const checkSession = () => {
     fetch('http://localhost:5555/checkuser',{
       method: 'POST',
@@ -40,7 +41,7 @@ function App() {
       .then((checkData) => {
         if (checkData.sessionUser) {
           console.log('User is logged in:', checkData.sessionUser);
-          setLogin(true)
+          setLoggedIn(true)
         } else {
           console.log('User is not logged in.');
         }
@@ -57,10 +58,10 @@ function App() {
       });
   
       if (response.ok) {
-        // Clear the session token from localStorage
-        localStorage.removeItem('userName');
-        setLogin(false)
+        localStorage.removeItem('sessionUser');
+        setLoggedIn(false)
         console.log('Logout successful');
+        navigate('/');
       } else {
         console.error('Error logging out');
       }
@@ -68,9 +69,9 @@ function App() {
       console.error('Error logging out:', error);
     }
   }
-  
+
   return (
-    // <AuthContext.Provider value={{ token, setToken, logout , setUserData, userData, guilds, setGuilds, sessionData, setSessionData}}>
+    <AuthContext.Provider value={{loggedIn, setLoggedIn, logout}}>
       <div className="App">
         <Header />
         <Routes>
@@ -84,7 +85,7 @@ function App() {
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
-    // </AuthContext.Provider>
+    </AuthContext.Provider>
   );
 }
 

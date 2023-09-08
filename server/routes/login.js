@@ -39,10 +39,9 @@ router.post('/login', async (req, res) => {
       // Compare the provided password with the password generator
       if (password === generateEmployeePassword(employee)) {
         // password matches
-
         // username method
         req.session.user = { username };
-        return res.send({user: username});
+        return res.send({user: employee});
 
         //token method
         // const sessionToken = generateSessionToken();

@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
+import { AuthContext } from '../App';
 
 // login for admin only
 // use localstorage remember me feature
 const Login = () => {
+  const { setLoggedIn } = useContext(AuthContext);
 
   const [show, setShow] = useState(false);
   const [remember, setRemember] = useState(false);
@@ -30,11 +32,14 @@ const Login = () => {
         }),
       });
       if (response.ok) {
-        const loginData = await response.json(); // Parse the response as JSON
+        const loginData = await response.json(); 
         const sessionUser = loginData.user;
-  
-        // Store the sessionUser in localStorage
-        localStorage.setItem('sessionUser', JSON.stringify(sessionUser));
+        console.log(sessionUser)
+
+        if(remember){
+          localStorage.setItem('sessionUser', JSON.stringify(sessionUser));
+        }
+        setLoggedIn(true);
         console.log('Login successful');
       } else {
         console.error('Error logging in');
@@ -50,10 +55,10 @@ const Login = () => {
       <form onSubmit={handleLogin}>
         <input type="text" onChange = {(e)=>{setUsername(e.target.value)}} placeholder='username'></input>
         <input type={show? "text": "password"} onChange = {(e)=>{setPassword(e.target.value)}} placeholder='password'></input>
-        <input type='checkbox' onChange={handleCheck}></input> 👁️‍🗨️
         <button type='submit'>Login</button>
-        <input type='checkbox' onChange={handleRemember}></input> Remember me
       </form>
+      <input type='checkbox' onChange={handleCheck}></input> Show password
+      <input type='checkbox' onChange={handleRemember}></input> Remember me
     </div>
   )
 }
