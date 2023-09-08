@@ -4,9 +4,17 @@ import { AuthContext } from '../App';
 // ! ADMIN ONLY
 // make edit delete shifts
 const Shifts = () => {
+
+  const renderShifts = () => {
+      // usual shift render map
+  }
+
   return (
-    <div>Shifts</div>
+    <div>
+        <button>Create a new shift</button>
+    </div>
   )
+}
 }
 
 export default Shifts
