@@ -9,10 +9,11 @@ const Employee = require('../models/employees');
 // GET employee by ID
 router.get('/employees/:id', async (req, res) => {
   const id = req.params.id;
-  
+  console.log(id)
   try {
     const employee = await Employee.findByPk(id);
     if (employee) {
+      console.log(employee)
       res.json(employee);
     } else {
       res.status(404).json({ message: 'Employee not found' });

@@ -15,8 +15,8 @@ const Employees = () => {
 
   const renderEmployees = () => {
     return employees.map((employee)=>{
-      return (<div>
-        <EmployeeCard employee={employee}/>
+      return (<div key={employee.id}>
+        <EmployeeCard employee={employee} />
       </div>)
     })
   }

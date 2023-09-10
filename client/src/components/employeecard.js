@@ -1,10 +1,12 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom';
 
+// !terminate just links to Confirmation, confirmation yes button is the actual delete button
 const EmployeeCard = ({employee}) => {
+  const navigate = useNavigate();
   return (
     <div className="employee-card">
-        <p>{employee.name}, {employee.position} | Hired {employee.hire_date} </p>
-        <p>Salary: {employee.salary}, Total hours: {employee.hours}, Total pay: {employee.hours * employee.salary}</p>
+        <a onClick= {()=>{navigate(`/employee/${employee.id}`)}}>{employee.name}, {employee.position} </a> 
         <button>Terminate</button>
     </div>
   )
