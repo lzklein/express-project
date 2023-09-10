@@ -9,6 +9,10 @@ const resetController = require('./routes/reset');
 const loginRoute = require('./routes/login');
 const logoutRoute = require('./routes/logout');
 const checkSessionRoute = require('./routes/checksession');
+const shiftsRoute = require('./routes/shifts');
+const shiftsByIdRoute = require('./routes/shiftbyid');
+const timeOffRoute = require ('./routes/timerequests');
+const timeOffByIdRoute = require ('./routes/timerequestbyid');
 
 // Mount routes
 router.use(employeesRoute);
@@ -17,5 +21,10 @@ router.delete('/reset', resetController.resetData);
 router.use(loginRoute);
 router.use(logoutRoute);
 router.use(checkSessionRoute);
+router.use(shiftsRoute)
+router.use(shiftsByIdRoute)
+router.use(timeOffRoute)
+router.use(timeOffByIdRoute)
+
 
 module.exports = router;

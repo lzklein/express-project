@@ -11,7 +11,30 @@ const seedEmployer = async () => {
       position: 'Dev',
       salary: 10,
       admin: 1,
-      // Other employee properties...
+    };
+
+    const response = await fetch('http://localhost:5555/employees', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newEmployee),
+    });
+
+    if (response.ok) {
+      console.log('Employee seeded successfully');
+    } else {
+      console.error('Error seeding employee');
+    }
+  } catch (error) {
+    console.error('Error seeding employee:', error);
+  }
+  try {
+    const newEmployee = {
+      name: 'John Doe',
+      position: 'Clerk',
+      salary: 14.77,
+      admin: 0,
     };
 
     const response = await fetch('http://localhost:5555/employees', {
@@ -77,7 +100,7 @@ const Header = () => {
       <button onClick={seedEmployer}>Boop</button>
       <button onClick={resetData}>RESET</button>
       <button onClick={checkSession}>SESSION</button>
-      <button onClick={handleLogout}>logout</button>
+      {/* <button onClick={handleLogout}>logout</button> */}
     </div>
   )
 }

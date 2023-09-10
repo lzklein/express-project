@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react'
 import { AuthContext } from '../App';
+import {useNavigate} from 'react-router-dom';
 
 // login for admin only
 // use localstorage remember me feature
@@ -10,6 +11,8 @@ const Login = () => {
   const [remember, setRemember] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const handleShowPassword=()=> {
     setShow(!show)
@@ -41,6 +44,7 @@ const Login = () => {
         setEmployee(sessionUser)
         setLoggedIn(true);
         console.log('Login successful');
+        navigate('/')
       } else {
         console.error('Error logging in');
       }

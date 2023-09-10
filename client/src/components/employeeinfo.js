@@ -22,7 +22,7 @@ const Employeeinfo = () => {
       {loaded?<>
         <button onClick={test}>test</button>
         <p>{employee.name}, {employee.position} </p> 
-        <p>Salary: {employee.salary}, Total hours: {employee.hours}, Total pay: {employee.hours * employee.salary}</p>
+        <p>Salary: ${employee.salary}, Total hours: {employee.hours}, Total pay: ${employee.hours * employee.salary}</p>
         <p> Hired {employee.hire_date} </p>
         <button>Terminate</button>
 
