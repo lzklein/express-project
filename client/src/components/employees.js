@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import EmployeeCard from './employeecard'
+import {useNavigate} from 'react-router-dom';
+
 // full list of all employees
 const Employees = () => {
+  const navigate = useNavigate();
   const[employees, setEmployees] = useState(null)
   const [loaded, setLoaded] = useState(false)
   useEffect(()=>{
@@ -27,7 +30,7 @@ const Employees = () => {
         loaded ?
         <>
         <button onClick={()=>{console.log(employees)}}>bip</button>
-        <button>Create a new Hire</button>
+        <button onClick={()=>{navigate('/employee/new')}}>Create a new Hire</button>
         {renderEmployees()}
         </>
         :

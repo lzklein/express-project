@@ -7,12 +7,14 @@ import Home from './components/home';
 import Header from './components/header';
 import TimeoffRequest from './components/timeoffrequest';
 import Schedule from './components/schedule';
-import Shifts from './components/shifts';
+import ScheduleEdit from './components/scheduleedit';
+// import Shifts from './components/shifts';
 import Employees from './components/employees';
 import Login from './components/login';
 import Profile from './components/profile';
 import Timeoffinbox from './components/timeoffinbox';
 import EmployeeInfo from './components/employeeinfo';
+import EmployeeForm from './components/employeeform';
 
 export const AuthContext = createContext();
 
@@ -79,11 +81,13 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
+          <Route path='/employee/new' element = {<EmployeeForm/>}/>
           <Route path='/employee/:id' element = {<EmployeeInfo />}/>
           <Route path='/inbox' element={<Timeoffinbox />}/>
           <Route path='/timeoff' element={<TimeoffRequest />}/>
+          <Route path='/schedule/edit' element={<ScheduleEdit/>} />
           <Route path='/schedule' element={<Schedule />}/>
-          <Route path='/shifts' element={<Shifts />}/>
+          {/* <Route path='/shifts' element={<Shifts />}/> */}
           <Route path='/employees' element={<Employees />}/>
           <Route path='/profile' element={<Profile />}/>
           <Route path='/login' element={<Login />}/>
