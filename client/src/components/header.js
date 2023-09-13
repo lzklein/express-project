@@ -55,6 +55,165 @@ const seedEmployer = async () => {
   }
 }
 
+const seedShift = async () => {
+  try {
+    const newShifts = [
+      {
+        name: 'Morning',
+        start_time: '7:00:00',
+        end_time: '12:00:00',
+        day_of_week: 'Monday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Afternoon',
+        start_time: '12:00:00',
+        end_time: '17:00:00',
+        day_of_week: 'Monday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Evening',
+        start_time: '17:00:00',
+        end_time: '22:00:00',
+        day_of_week: 'Monday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Morning',
+        start_time: '7:00:00',
+        end_time: '12:00:00',
+        day_of_week: 'Tuesday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Afternoon',
+        start_time: '12:00:00',
+        end_time: '17:00:00',
+        day_of_week: 'Tuesday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Evening',
+        start_time: '17:00:00',
+        end_time: '22:00:00',
+        day_of_week: 'Tuesday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Morning',
+        start_time: '7:00:00',
+        end_time: '12:00:00',
+        day_of_week: 'Wednesday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Afternoon',
+        start_time: '12:00:00',
+        end_time: '17:00:00',
+        day_of_week: 'Wednesday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Evening',
+        start_time: '17:00:00',
+        end_time: '22:00:00',
+        day_of_week: 'Wednesday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Morning',
+        start_time: '7:00:00',
+        end_time: '12:00:00',
+        day_of_week: 'Thursday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Afternoon',
+        start_time: '12:00:00',
+        end_time: '17:00:00',
+        day_of_week: 'Thursday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Evening',
+        start_time: '17:00:00',
+        end_time: '22:00:00',
+        day_of_week: 'Thursday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Morning',
+        start_time: '7:00:00',
+        end_time: '12:00:00',
+        day_of_week: 'Friday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Afternoon',
+        start_time: '12:00:00',
+        end_time: '17:00:00',
+        day_of_week: 'Friday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Evening',
+        start_time: '17:00:00',
+        end_time: '22:00:00',
+        day_of_week: 'Friday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Morning',
+        start_time: '7:00:00',
+        end_time: '12:00:00',
+        day_of_week: 'Saturday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Afternoon',
+        start_time: '12:00:00',
+        end_time: '17:00:00',
+        day_of_week: 'Saturday',
+        employees_needed: 2,
+      },
+      {
+        name: 'Evening',
+        start_time: '17:00:00',
+        end_time: '22:00:00',
+        day_of_week: 'Saturday',
+        employees_needed: 2,
+      },
+    ];
+
+    const createShift = async (shift) => {
+      try {
+        const response = await fetch('http://localhost:5555/shifts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(shift),
+        });
+    
+        if (response.ok) {
+          console.log(`Shift '${shift.name}' created successfully`);
+        } else {
+          console.error(`Error creating shift '${shift.name}'`);
+        }
+      } catch (error) {
+        console.error(`Error creating shift '${shift.name}':`, error);
+      }
+    };
+
+    const shiftPromises = newShifts.map((shift) => createShift(shift));
+    await Promise.all(shiftPromises);
+    console.log('All shifts created successfully');
+  } catch (error) {
+    console.error('Error seeding shifts:', error);
+  }
+}
+
 const resetData = async () => {
   try {
     const response = await fetch('http://localhost:5555/reset', {
@@ -97,7 +256,8 @@ const Header = () => {
   return (
     <div>
       <Navbar />
-      <button onClick={seedEmployer}>Boop</button>
+      <button onClick={seedEmployer}>Employee Seed</button>
+      <button onClick={seedShift}>Shift Seed</button>
       <button onClick={resetData}>RESET</button>
       <button onClick={checkSession}>SESSION</button>
       {/* <button onClick={handleLogout}>logout</button> */}

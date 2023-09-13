@@ -9,7 +9,7 @@ module.exports = {
         autoIncrement: true,
       },
       day_of_week: {
-        type: Sequelize.DATEONLY,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       start_time: {

@@ -1,8 +1,9 @@
 import React from 'react'
 
+// ? Stretch
+// display shift info with edit and delete
 const shiftcard = () => {
 
-// display shift info with edit and delete
   return (
     <div>
         <button>Edit</button>

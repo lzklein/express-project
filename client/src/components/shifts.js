@@ -4,6 +4,8 @@ import { AuthContext } from '../App';
 // ! ADMIN ONLY
 // make edit delete shifts
 // ! scrapping for now
+// ? Stretch
+
 const Shifts = () => {
 
   const renderShifts = () => {

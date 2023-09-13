@@ -8,7 +8,7 @@ const Shift = sequelize.define('shifts', {
         autoIncrement: true
     },
     day_of_week: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     start_time: {
