@@ -6,92 +6,49 @@ import {useNavigate, useLocation} from 'react-router-dom';
 const ScheduleEdit = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const locationData = location.state; 
-    const [scheduleData, setScheduleData] = useState(locationData);
+    const { scheduleData, daysOfWeek } = location.state;
+    const [editSchedule, setEditSchedule] = useState(scheduleData);
+    const [weekDay, setWeekDay] = useState(daysOfWeek)
+    // console.log(scheduleData, daysOfWeek)
 
-    console.log(scheduleData)
-  return (
+    const renderHead = () => {
+      return weekDay.map((dayOfWeek) => (
+        <th key={dayOfWeek}>{dayOfWeek}</th>
+      ))
+    }
+    
+    const renderBody = () => {
+      return weekDay.map((dayOfWeek) => (
+        <td key={dayOfWeek}>{dayOfWeek}</td>
+      ))
+    }
+
+    return (
     <div>
-      <h2>Schedule</h2>
+      <h2>Schedule Editor</h2>
       <button onClick={()=>{navigate('/schedule')}}>Save</button>
+
+      <button onClick={()=>{console.log(scheduleData)}}>boop</button>
       <table>
         <thead>
           <tr>
             <th></th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            {/* closed sunday */}
+            {renderHead()}
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th>Morning 7-12</th>
-            <td>
-              {/* example */}
-              <li>John Doe <button>-</button></li>
-              <li>Dev <button>-</button></li>
-              <button>Add Employee</button>
-            </td>
-            <td>
-            <button>Add Employee</button>
-            </td>
-            <td>
-            <button>Add Employee</button>
-            </td>            
-            <td>
-            <button>Add Employee</button>
-            </td>            
-            <td>
-            <button>Add Employee</button>
-            </td>
-            <td>
-            <button>Add Employee</button>
-            </td>
+            <td>Morning 7-12</td>
+            {renderBody()}
           </tr>
           <tr>
-            <th>Afternoon 12-5</th>
-            <td>
-            <button>Add Employee</button>
-            </td>
-            <td>
-            <button>Add Employee</button>
-            </td>            
-            <td>
-            <button>Add Employee</button>
-            </td>            
-            <td>
-            <button>Add Employee</button>
-            </td>
-            <td>
-            <button>Add Employee</button>
-            </td>
-            <td>
-            <button>Add Employee</button>
-            </td>
+            <td>Afternoon 12-5</td>
+            {renderBody()}
           </tr>
-          <th>Closing 5-10</th>
-          <td>
-            <button>Add Employee</button>
-            </td>
-            <td>
-            <button>Add Employee</button>
-            </td>            
-            <td>
-            <button>Add Employee</button>
-            </td>            
-            <td>
-            <button>Add Employee</button>
-            </td>
-            <td>
-            <button>Add Employee</button>
-            </td>
-            <td>
-            <button>Add Employee</button>
-            </td>
+          <tr>
+            <td>Closing 5-10</td>
+            {renderBody()}
+          </tr>
         </tbody>
       </table>
     </div>
