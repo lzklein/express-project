@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config');
 
-const TimeOffRequest = sequelize.define('timeoff', {
+const TimeOffRequest = sequelize.define('timeoffs', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

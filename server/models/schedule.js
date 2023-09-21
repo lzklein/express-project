@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config');
 
 // join table employees to shifts
-const Schedule = sequelize.define('schedule', {
+const Schedule = sequelize.define('schedules', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

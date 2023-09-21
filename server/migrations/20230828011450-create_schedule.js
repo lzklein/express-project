@@ -2,13 +2,13 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('schedule', {
+    await queryInterface.createTable('schedules', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      employeeId: {
+      employee_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'employees',
@@ -16,7 +16,7 @@ module.exports = {
         },
         allowNull: false,
       },
-      shiftId: {
+      shift_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'shifts',

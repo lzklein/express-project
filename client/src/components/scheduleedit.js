@@ -9,7 +9,23 @@ const ScheduleEdit = () => {
     const { scheduleData, daysOfWeek } = location.state;
     const [editSchedule, setEditSchedule] = useState(scheduleData);
     const [weekDay, setWeekDay] = useState(daysOfWeek)
-    // console.log(scheduleData, daysOfWeek)
+    // console.log(scheduleData)
+    const [dropdowns, setDropdowns] = useState([]);
+
+
+    const addDropdown = (dayOfWeek) => {
+      setDropdowns((prevDropdowns) => ({
+        ...prevDropdowns,
+        [dayOfWeek]: true, 
+      }));
+    };
+
+    const removeDropdown = (dayOfWeek) => {
+      setDropdowns((prevDropdowns) => ({
+        ...prevDropdowns,
+        [dayOfWeek]: false,
+      }));
+    };
 
     const renderHead = () => {
       return weekDay.map((dayOfWeek) => (
@@ -19,9 +35,23 @@ const ScheduleEdit = () => {
     
     const renderBody = () => {
       return weekDay.map((dayOfWeek) => (
-        <td key={dayOfWeek}>{dayOfWeek}</td>
-      ))
-    }
+        <td key={dayOfWeek}>
+          <p>{dayOfWeek}</p>
+          <button onClick={() => addDropdown(dayOfWeek)}>+</button>
+          {dropdowns[dayOfWeek] && ( 
+            <div>
+              <select>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select>
+              <button onClick={() => removeDropdown(dayOfWeek)}>-</button>
+            </div>
+          )}
+        </td>
+      ));
+    };
+  
 
     return (
     <div>
