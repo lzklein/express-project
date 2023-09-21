@@ -23,9 +23,9 @@ const Navbar = () => {
         {/* <li className="nav-item">
           <NavLink to="/shifts">Shifts</NavLink>
         </li> */}
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <NavLink to="/inbox">Inbox</NavLink>
-        </li>
+        </li> */}
         </>
         : null}
         {loggedIn?
@@ -33,9 +33,9 @@ const Navbar = () => {
         <li className="nav-item">
           <NavLink to="/schedule">Schedule</NavLink>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <NavLink to="/timeoff">Time Off Request</NavLink>
-        </li>
+        </li> */}
         <li className="nav-item">
         <NavLink to="/profile">{employee.name}</NavLink>
         </li>

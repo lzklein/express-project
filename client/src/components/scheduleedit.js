@@ -1,11 +1,15 @@
-import React from 'react'
-import {useNavigate} from 'react-router-dom';
+import React, {useState} from 'react'
+import {useNavigate, useLocation} from 'react-router-dom';
 // 6 columns (closed sunday)
 // min 2 per shift
 // if under 2 people, display "x amount needed" either 2 or 1 if current at 0 or 1 employees on x shift
 const ScheduleEdit = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const locationData = location.state; 
+    const [scheduleData, setScheduleData] = useState(locationData);
 
+    console.log(scheduleData)
   return (
     <div>
       <h2>Schedule</h2>

@@ -47,7 +47,7 @@ const renderBody = () => {
   return (
     <div>
       <h2>Schedule</h2>
-      <button onClick={()=>{navigate('/schedule/edit')}}>Edit</button>
+      <button onClick={()=>{navigate('/schedule/edit', { state: scheduleData })}}>Edit</button>
       <button onClick={()=>{console.log(scheduleData)}}>boop</button>
       <table>
         <thead>
