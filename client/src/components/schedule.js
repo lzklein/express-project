@@ -84,6 +84,7 @@ const renderBody = () => {
     return <tr>
       <td>{shift.name} {shift.start_time}-{shift.end_time}</td>
       {renderHead()}
+      {/* replace above with "renderSchedule" function or something */}
     </tr>
   })
 
